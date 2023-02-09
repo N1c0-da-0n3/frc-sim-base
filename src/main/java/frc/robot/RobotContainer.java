@@ -97,7 +97,7 @@ public class RobotContainer {
   
   //Autonomous Commands
 
-  private final Command autoTest() {
+  public final Command autoTest() {
         //use pathweaver json for autonomous trajectory
         String trajectoryJSON = "paths/test.wpilib.json";
         Trajectory trajectory = new Trajectory();
@@ -133,15 +133,10 @@ public class RobotContainer {
         return ramseteCommand.andThen(() -> m_robotDrive.tankDriveVolts(0, 0));
   }
 
-  //creates a sendable chooser to pick auto command on shuffleboard
-  private final SendableChooser<Command> m_chooser = new SendableChooser<>();
+  //Create sendable chooser to pick autonomous command
+  SendableChooser<Command> m_chooser = new SendableChooser<>();
 
-  public void robotInit() {
-    m_chooser.setDefaultOption("autoTest", autoTest());
-    SmartDashboard.putData("Auto choices", m_chooser);
-  }
-
-   public Command getAutonomousCommand() {
+   public Command getAutonomousCommand() {  
     return m_chooser.getSelected();
 
   }
