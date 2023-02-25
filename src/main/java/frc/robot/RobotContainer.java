@@ -16,6 +16,10 @@ import edu.wpi.first.math.trajectory.TrajectoryGenerator;
 import edu.wpi.first.math.trajectory.constraint.DifferentialDriveVoltageConstraint;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.XboxController.Button;
+import edu.wpi.first.wpilibj.shuffleboard.ComplexWidget;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.Constants.AutoConstants;
 import frc.robot.subsystems.DriveSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
@@ -34,10 +38,24 @@ public class RobotContainer {
   // The robot's subsystems
   private final DriveSubsystem m_robotDrive = new DriveSubsystem();
 
+<<<<<<< Updated upstream
+=======
+  private Command m_autonCommand1, m_autonCommand2;
+  //auton routines
+
+  // A chooser for autonomous commands
+  SendableChooser<Command> m_chooser = new SendableChooser<>();
+    // Add commands to the autonomous command chooser
+    //put the chooser on the dashboard
+>>>>>>> Stashed changes
   // The driver's controller
   XboxController m_driverController =
       new XboxController(Constants.OIConstants.kDriverControllerPort);
-
+  public void SendableChooser() {
+    m_chooser.setDefaultOption("auton", m_autonCommand1);
+    m_chooser.addOption("auton2", m_autonCommand2);
+    SmartDashboard.putData(m_chooser);
+  }
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the button bindings
@@ -57,7 +75,6 @@ public class RobotContainer {
                     -m_driverController.getLeftY(), -m_driverController.getRightX()),
             m_robotDrive));
   }
-
   /**
    * Use this method to define your button->command mappings. Buttons can be created by
    * instantiating a {@link edu.wpi.first.wpilibj.GenericHID} or one of its subclasses ({@link
@@ -86,6 +103,13 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
+<<<<<<< Updated upstream
+=======
+    return m_chooser.getSelected();
+  }
+
+  public Command getAutonCommand1() {
+>>>>>>> Stashed changes
     // Create a voltage constraint to ensure we don't accelerate too fast
     var autoVoltageConstraint =
         new DifferentialDriveVoltageConstraint(
