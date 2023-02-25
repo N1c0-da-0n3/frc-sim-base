@@ -38,8 +38,6 @@ public class RobotContainer {
   // The robot's subsystems
   private final DriveSubsystem m_robotDrive = new DriveSubsystem();
 
-<<<<<<< Updated upstream
-=======
   private Command m_autonCommand1, m_autonCommand2;
   //auton routines
 
@@ -47,7 +45,7 @@ public class RobotContainer {
   SendableChooser<Command> m_chooser = new SendableChooser<>();
     // Add commands to the autonomous command chooser
     //put the chooser on the dashboard
->>>>>>> Stashed changes
+
   // The driver's controller
   XboxController m_driverController =
       new XboxController(Constants.OIConstants.kDriverControllerPort);
@@ -103,13 +101,11 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-<<<<<<< Updated upstream
-=======
+
     return m_chooser.getSelected();
   }
 
   public Command getAutonCommand1() {
->>>>>>> Stashed changes
     // Create a voltage constraint to ensure we don't accelerate too fast
     var autoVoltageConstraint =
         new DifferentialDriveVoltageConstraint(
